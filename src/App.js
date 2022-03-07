@@ -1,15 +1,21 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css";
+/* eslint-disable react/jsx-no-useless-fragment */
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import styled from 'styled-components';
+import './App.css';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="app">
       <Router>
         <>
-          <Routes>
-            <Route path="/" element={<h1>This is th homepage </h1>} />
-          </Routes>
+          <Header />
+          <AppBody>
+            <Routes>
+              <Route path="/" />
+            </Routes>
+          </AppBody>
         </>
       </Router>
     </div>
@@ -17,3 +23,5 @@ function App() {
 }
 
 export default App;
+
+const AppBody = styled.div``;
