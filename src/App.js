@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import './App.css';
 import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <>
           <Header />
           <AppBody>
+            <Sidebar />
             <Routes>
               <Route path="/" />
             </Routes>
@@ -24,4 +26,7 @@ function App() {
 
 export default App;
 
-const AppBody = styled.div``;
+const AppBody = styled.div`
+  display: flex;
+  height: 100vh;
+`;
