@@ -11,13 +11,15 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import InsertCommentIcon from '@mui/icons-material/InsertComment';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import styled from 'styled-components';
-import { db } from '../firebase';
+import { auth, db } from '../firebase';
 import SidebarOption from './SidebarOption';
 
 function Sidebar() {
-  const [channels, loading, error] = useCollection(db.collection('rooms'));
+  const [channels] = useCollection(db.collection('rooms'));
+  const [user] = useAuthState(auth);
   return (
     <SidebarContainer>
       <SidebarHeader>
@@ -25,7 +27,7 @@ function Sidebar() {
           <h2>Shcool HQ</h2>
           <h3>
             <FiberManualRecordIcon />
-            Serafim Sen
+            {user.displayName}
           </h3>
         </SidebarInfo>
         <CreateIcon />
