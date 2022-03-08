@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { db } from '../firebase';
 
-function ChatInput({ channelName, channelId }) {
+function ChatInput({ channelName, channelId, chatRef }) {
   const [input, setInput] = useState('');
 
   const sendMessage = (e) => {
@@ -16,10 +16,14 @@ function ChatInput({ channelName, channelId }) {
     }
 
     db.collection('rooms').doc(channelId).collection('messages').add({
-      messages: input,
-      timestap: firebase.firestore.FieldValue.serverTimestamp(),
+      message: input,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       user: 'Serafim Sen',
       userImage: 'https://i.ytimg.com/vi/JEfu1djzXcE/hqdefault.jpg',
+    });
+
+    chatRef?.current?.scrollIntoView({
+      behavior: 'smooth',
     });
 
     setInput('');
@@ -44,6 +48,7 @@ function ChatInput({ channelName, channelId }) {
 ChatInput.propTypes = {
   channelId: PropTypes.string,
   channelName: PropTypes.string,
+  chatRef: PropTypes.object,
 };
 
 export default ChatInput;
