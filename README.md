@@ -2,6 +2,11 @@
 
 ### [Site link](https://slack-clone-a81dc.web.app/)
 
+<kbd>
+  <img align="right" alt="img" src="vrVRMkt.jpeg"  />
+</kbd>
+
+
  ### 🛠 The tech stack is:
 
 
